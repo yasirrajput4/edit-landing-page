@@ -33,3 +33,10 @@ A lightweight, customizable landing page with a built‑in content editor. The e
    git clone https://github.com/yasirrajput4/edit-landing-page.git
    cd edit-landing-page
    ```
+2. **Run the App**
+
+- Open html/index.html directly in your browser.
+
+3. **Open the Editor**
+
+- Click the "Edit Landing Page" button on the main page to customize your site.
