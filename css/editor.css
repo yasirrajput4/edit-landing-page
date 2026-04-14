@@ -1,105 +1,475 @@
+/* ═══════════════════════════════════════════
+   CSS CUSTOM PROPERTIES
+═══════════════════════════════════════════ */
+:root {
+  /* Colors */
+  --color-bg: #f4f4f0;
+  --color-surface: #ffffff;
+  --color-surface-alt: #f9f9f7;
+  --color-border: #e5e5e0;
+  --color-text: #1a1a2e;
+  --color-text-muted: #6b6b7b;
+  --color-accent: #00c896;
+  --color-accent-warm: #ff6b35;
+  --color-sidebar-bg: #1a1a2e;
+
+  /* Layout */
+  --sidebar-width: 240px;
+  --topbar-height: 64px;
+  --radius-card: 12px;
+  --radius-pill: 30px;
+
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+}
+
+/* ═══════════════════════════════════════════
+   RESET
+═══════════════════════════════════════════ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
-  font-family: Arial, sans-serif;
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-  line-height: 1.6;
-  color: #333;
-  background-color: #f5f5f5;
+  font-family: "DM Sans", sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-size: 0.95rem;
+  overflow-x: hidden;
 }
 
-h1 {
-  font-size: 2rem;
-  margin-bottom: 20px;
-  color: #3f51b5;
+a {
+  text-decoration: none;
+  color: inherit;
+}
+ul {
+  list-style: none;
 }
 
-.editor-container {
-  background-color: #ffffff;
+/* ═══════════════════════════════════════════
+   OVERALL LAYOUT
+═══════════════════════════════════════════ */
+.editor-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ═══════════════════════════════════════════
+   SIDEBAR
+═══════════════════════════════════════════ */
+.editor-sidebar {
+  width: var(--sidebar-width);
+  flex-shrink: 0;
+  background: var(--color-sidebar-bg);
+  display: flex;
+  flex-direction: column;
+  padding: 0 14px 24px;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  z-index: 50;
+}
+
+.sidebar-header {
+  padding: 20px 8px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 10px;
+}
+
+.sidebar-logo {
+  font-family: "Playfair Display", serif;
+  font-size: 1.2rem;
+  color: #ffffff;
+  display: block;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex: 1;
+}
+
+.sidebar-nav-btn {
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.5);
+  padding: 10px 12px;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  padding: 25px;
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition:
+    background var(--transition-fast),
+    color var(--transition-fast);
 }
 
+.sidebar-nav-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.sidebar-nav-btn.active {
+  background: rgba(255, 255, 255, 0.13);
+  color: #ffffff;
+}
+
+.sidebar-back-link {
+  display: block;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.82rem;
+  padding: 10px 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 14px;
+  border-radius: 6px;
+  transition: color var(--transition-fast);
+}
+
+.sidebar-back-link:hover {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* ═══════════════════════════════════════════
+   MAIN CONTENT AREA
+═══════════════════════════════════════════ */
+.editor-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ═══════════════════════════════════════════
+   TOP BAR
+═══════════════════════════════════════════ */
+.editor-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  height: var(--topbar-height);
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  padding: 0 28px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.editor-topbar__title {
+  font-family: "Playfair Display", serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  flex: 1;
+}
+
+.editor-topbar__actions {
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+/* Sidebar toggle (hamburger inside topbar — mobile only) */
+.sidebar-toggle-btn {
+  display: none; /* hidden on desktop */
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 18px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.sidebar-toggle-btn span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: var(--color-text);
+  border-radius: 2px;
+}
+
+/* Save button */
+.btn-save {
+  background: var(--color-text);
+  color: #ffffff;
+  border: none;
+  padding: 9px 22px;
+  border-radius: var(--radius-pill);
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity var(--transition-fast);
+  white-space: nowrap;
+}
+
+.btn-save:hover {
+  opacity: 0.85;
+}
+
+/* Reset button */
+.btn-reset {
+  background: none;
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border);
+  padding: 9px 16px;
+  border-radius: var(--radius-pill);
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition:
+    border-color var(--transition-fast),
+    color var(--transition-fast);
+  white-space: nowrap;
+}
+
+.btn-reset:hover {
+  border-color: var(--color-text);
+  color: var(--color-text);
+}
+
+/* ═══════════════════════════════════════════
+   SAVE NOTIFICATION BANNER
+═══════════════════════════════════════════ */
+.save-notification {
+  display: none;
+  margin: 16px 28px 0;
+  padding: 12px 18px;
+  border-radius: var(--radius-card);
+  background: color-mix(in srgb, var(--color-accent) 12%, transparent);
+  color: var(--color-accent);
+  border: 1px solid color-mix(in srgb, var(--color-accent) 28%, transparent);
+  font-weight: 500;
+  font-size: 0.9rem;
+  animation: anim-slide-down 0.22s ease;
+}
+
+@keyframes anim-slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ═══════════════════════════════════════════
+   EDITOR PANELS (sections)
+═══════════════════════════════════════════ */
+.editor-panel {
+  display: none;
+  padding: 32px 28px;
+  animation: anim-fade-in 0.22s ease;
+}
+
+.editor-panel.active {
+  display: block;
+}
+
+@keyframes anim-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.panel-header {
+  margin-bottom: 28px;
+}
+
+.panel-header h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.panel-header p {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
+/* ═══════════════════════════════════════════
+   FORM FIELDS
+═══════════════════════════════════════════ */
 .form-group {
   margin-bottom: 20px;
 }
 
-label {
+.form-group label {
   display: block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.055em;
+  color: var(--color-text-muted);
   margin-bottom: 8px;
-  font-weight: bold;
 }
 
-input[type="text"],
-textarea {
+.form-group input[type="text"],
+.form-group textarea {
   width: 100%;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  box-sizing: border-box;
-  font-family: inherit;
-  font-size: 1rem;
-}
-
-input[type="text"]:focus,
-textarea:focus {
-  border-color: #3f51b5;
+  padding: 11px 14px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.95rem;
+  color: var(--color-text);
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
   outline: none;
 }
 
-textarea {
-  height: 150px;
+.form-group input[type="text"]:focus,
+.form-group textarea:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-accent) 15%, transparent);
+}
+
+.form-group textarea {
   resize: vertical;
+  min-height: 80px;
+  line-height: 1.55;
 }
 
-.buttons {
-  margin-top: 25px;
-  display: flex;
-  gap: 10px;
+/* Two-column field row */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
 }
 
-button {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 1rem;
-  font-weight: bold;
+/* ═══════════════════════════════════════════
+   FEATURE EDITOR CARDS (inner containers)
+═══════════════════════════════════════════ */
+.feature-editor-card {
+  background: var(--color-surface-alt);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  padding: 20px;
+  margin-bottom: 16px;
 }
 
-.save-button {
-  background-color: #3f51b5;
-  color: white;
-  flex: 1;
+.feature-editor-card__label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-muted);
+  margin-bottom: 14px;
 }
 
-.save-button:hover {
-  background-color: #303f9f;
-}
-
-.cancel-button {
-  background-color: #f2f2f2;
-  color: #333;
-}
-
-.cancel-button:hover {
-  background-color: #e0e0e0;
-}
-
-.message {
-  margin: 15px 0 40px;
-  padding: 12px;
-  border-radius: 4px;
+/* ═══════════════════════════════════════════
+   SIDEBAR OVERLAY (mobile backdrop)
+═══════════════════════════════════════════ */
+.sidebar-overlay {
   display: none;
-  text-align: center;
-  background-color: #e8f5e9;
-  color: #4caf50;
-  border: 1px solid #c8e6c9;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 149;
+  opacity: 0;
+  transition: opacity 0.25s ease;
 }
 
-@media (max-width: 600px) {
-  .buttons {
-    flex-direction: column;
+.sidebar-overlay.is-visible {
+  display: block;
+  opacity: 1;
+}
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE — TABLET  (≤ 900px)
+═══════════════════════════════════════════ */
+@media (max-width: 900px) {
+  :root {
+    --sidebar-width: 200px;
+  }
+
+  .editor-topbar {
+    padding: 0 20px;
+    gap: 12px;
+  }
+  .editor-panel {
+    padding: 24px 20px;
+  }
+  .save-notification {
+    margin: 12px 20px 0;
+  }
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE — MOBILE  (≤ 640px)
+═══════════════════════════════════════════ */
+@media (max-width: 640px) {
+  /* Show the hamburger toggle inside the topbar */
+  .sidebar-toggle-btn {
+    display: flex;
+  }
+
+  /* Sidebar slides in as a drawer */
+  .editor-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    z-index: 150;
+    width: var(--sidebar-width);
+    transform: translateX(-100%);
+    transition: transform 0.28s ease;
+  }
+
+  .editor-sidebar.is-open {
+    transform: translateX(0);
+  }
+
+  /* Topbar: hamburger | title | actions — all in one line */
+  .editor-topbar {
+    height: 56px;
+    padding: 0 16px;
+    gap: 12px;
+  }
+
+  .editor-topbar__title {
+    font-size: 1.1rem;
+  }
+
+  .btn-save {
+    padding: 8px 14px;
+    font-size: 0.82rem;
+  }
+  .btn-reset {
+    padding: 8px 10px;
+    font-size: 0.82rem;
+    display: none;
+  }
+
+  .editor-panel {
+    padding: 20px 16px;
+  }
+  .save-notification {
+    margin: 10px 16px 0;
+  }
+  .panel-header h2 {
+    font-size: 1.2rem;
   }
 }

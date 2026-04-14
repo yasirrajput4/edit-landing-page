@@ -3,43 +3,401 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Content Editor – Edit Your Landing Page Instantly</title>
+    <title>Page Editor — Nexova</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="../css/editor.css" />
   </head>
   <body>
-    <h1>Content Editor</h1>
-
-    <div class="editor-container">
-      <form id="edit-form">
-        <div class="form-group">
-          <label for="title">Title</label>
-          <input type="text" id="title" name="title" required />
+    <div class="editor-layout">
+      <!-- ── SIDEBAR ── -->
+      <aside class="editor-sidebar" id="editor-sidebar">
+        <div class="sidebar-header">
+          <span class="sidebar-logo">✦ Nexova Editor</span>
         </div>
-
-        <div class="form-group">
-          <label for="subtitle">Subtitle</label>
-          <input type="text" id="subtitle" name="subtitle" required />
-        </div>
-
-        <div class="form-group">
-          <label for="description">Description</label>
-          <textarea id="description" name="description" required></textarea>
-        </div>
-
-        <div class="buttons">
-          <button type="submit" class="save-button">Save Changes</button>
-          <button
-            type="button"
-            class="cancel-button"
-            onclick="window.location.href = 'index.html'"
-          >
-            Back to Site
+        <nav class="sidebar-nav">
+          <button class="sidebar-nav-btn active" data-target-section="navbar">
+            🧭 Navbar
           </button>
+          <button class="sidebar-nav-btn" data-target-section="hero">
+            🦸 Hero
+          </button>
+          <button class="sidebar-nav-btn" data-target-section="features">
+            ⚡ Features
+          </button>
+          <button class="sidebar-nav-btn" data-target-section="stats">
+            📊 Stats
+          </button>
+          <button class="sidebar-nav-btn" data-target-section="cta">
+            🚀 CTA Banner
+          </button>
+          <button class="sidebar-nav-btn" data-target-section="footer">
+            🦶 Footer
+          </button>
+        </nav>
+        <a href="index.html" class="sidebar-back-link"
+          >← Back to Landing Page</a
+        >
+      </aside>
+
+      <!-- ── MAIN PANEL ── -->
+      <main class="editor-main">
+        <!-- Top Bar -->
+        <div class="editor-topbar">
+          <!-- Hamburger: visible on mobile, sits INSIDE topbar for correct spacing -->
+          <button
+            class="sidebar-toggle-btn"
+            id="sidebar-toggle-btn"
+            aria-label="Toggle sidebar"
+          >
+            <span></span><span></span><span></span>
+          </button>
+          <h1 class="editor-topbar__title">Page Editor</h1>
+          <div class="editor-topbar__actions">
+            <button class="btn-reset" id="btn-reset">Reset All</button>
+            <button class="btn-save" id="btn-save">Save Changes</button>
+          </div>
         </div>
-      </form>
+
+        <!-- Save Notification -->
+        <div class="save-notification" id="save-notification">
+          ✅ Changes saved successfully!
+        </div>
+
+        <!-- Editor Form -->
+        <form id="editor-form" novalidate>
+          <!-- ── NAVBAR PANEL ── -->
+          <div class="editor-panel active" id="panel-navbar">
+            <div class="panel-header">
+              <h2>🧭 Navbar</h2>
+              <p>Edit your brand name and navigation link labels.</p>
+            </div>
+            <div class="form-group">
+              <label for="input-nav-brand">Brand / Logo Name</label>
+              <input type="text" id="input-nav-brand" placeholder="Nexova" />
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="input-nav-link-1">Nav Link 1</label>
+                <input
+                  type="text"
+                  id="input-nav-link-1"
+                  placeholder="Solutions"
+                />
+              </div>
+              <div class="form-group">
+                <label for="input-nav-link-2">Nav Link 2</label>
+                <input
+                  type="text"
+                  id="input-nav-link-2"
+                  placeholder="Results"
+                />
+              </div>
+              <div class="form-group">
+                <label for="input-nav-link-3">Nav Link 3</label>
+                <input
+                  type="text"
+                  id="input-nav-link-3"
+                  placeholder="Pricing"
+                />
+              </div>
+              <div class="form-group">
+                <label for="input-nav-link-4">CTA Button Label</label>
+                <input
+                  type="text"
+                  id="input-nav-link-4"
+                  placeholder="Get Started"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- ── HERO PANEL ── -->
+          <div class="editor-panel" id="panel-hero">
+            <div class="panel-header">
+              <h2>🦸 Hero Section</h2>
+              <p>The first thing visitors see — make it count.</p>
+            </div>
+            <div class="form-group">
+              <label for="input-hero-badge">Badge Text</label>
+              <input
+                type="text"
+                id="input-hero-badge"
+                placeholder="✦ Now in Public Beta"
+              />
+            </div>
+            <div class="form-group">
+              <label for="input-page-title">Main Headline</label>
+              <input
+                type="text"
+                id="input-page-title"
+                placeholder="Scale Your Business with Confidence"
+              />
+            </div>
+            <div class="form-group">
+              <label for="input-page-subtitle">Subheadline</label>
+              <input
+                type="text"
+                id="input-page-subtitle"
+                placeholder="The all-in-one platform for modern teams."
+              />
+            </div>
+            <div class="form-group">
+              <label for="input-page-description">Description Paragraph</label>
+              <textarea
+                id="input-page-description"
+                rows="3"
+                placeholder="A short paragraph about your product or service."
+              ></textarea>
+            </div>
+            <div class="form-group">
+              <label for="input-hero-cta">Primary Button Text</label>
+              <input
+                type="text"
+                id="input-hero-cta"
+                placeholder="Start for Free"
+              />
+            </div>
+          </div>
+
+          <!-- ── FEATURES PANEL ── -->
+          <div class="editor-panel" id="panel-features">
+            <div class="panel-header">
+              <h2>⚡ Features Section</h2>
+              <p>Showcase your product's key strengths.</p>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="input-features-title">Section Title</label>
+                <input
+                  type="text"
+                  id="input-features-title"
+                  placeholder="Why Teams Choose Nexova"
+                />
+              </div>
+              <div class="form-group">
+                <label for="input-features-subtitle">Section Subtitle</label>
+                <input
+                  type="text"
+                  id="input-features-subtitle"
+                  placeholder="Built for speed, designed for scale."
+                />
+              </div>
+            </div>
+
+            <div class="feature-editor-card">
+              <p class="feature-editor-card__label">Feature Card 1</p>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="input-feature-1-icon">Icon (emoji)</label>
+                  <input
+                    type="text"
+                    id="input-feature-1-icon"
+                    placeholder="⚡"
+                    maxlength="4"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="input-feature-1-title">Title</label>
+                  <input
+                    type="text"
+                    id="input-feature-1-title"
+                    placeholder="Blazing Performance"
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="input-feature-1-desc">Description</label>
+                <textarea id="input-feature-1-desc" rows="2"></textarea>
+              </div>
+            </div>
+
+            <div class="feature-editor-card">
+              <p class="feature-editor-card__label">Feature Card 2</p>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="input-feature-2-icon">Icon (emoji)</label>
+                  <input
+                    type="text"
+                    id="input-feature-2-icon"
+                    placeholder="🎯"
+                    maxlength="4"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="input-feature-2-title">Title</label>
+                  <input
+                    type="text"
+                    id="input-feature-2-title"
+                    placeholder="Built for Your Brand"
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="input-feature-2-desc">Description</label>
+                <textarea id="input-feature-2-desc" rows="2"></textarea>
+              </div>
+            </div>
+
+            <div class="feature-editor-card">
+              <p class="feature-editor-card__label">Feature Card 3</p>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="input-feature-3-icon">Icon (emoji)</label>
+                  <input
+                    type="text"
+                    id="input-feature-3-icon"
+                    placeholder="🔒"
+                    maxlength="4"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="input-feature-3-title">Title</label>
+                  <input
+                    type="text"
+                    id="input-feature-3-title"
+                    placeholder="Enterprise-Grade Security"
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="input-feature-3-desc">Description</label>
+                <textarea id="input-feature-3-desc" rows="2"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── STATS PANEL ── -->
+          <div class="editor-panel" id="panel-stats">
+            <div class="panel-header">
+              <h2>📊 Stats Section</h2>
+              <p>Highlight your key numbers and social proof.</p>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="input-stat-1-number">Stat 1 — Value</label>
+                <input
+                  type="text"
+                  id="input-stat-1-number"
+                  placeholder="25K+"
+                />
+              </div>
+              <div class="form-group">
+                <label for="input-stat-1-label">Stat 1 — Label</label>
+                <input
+                  type="text"
+                  id="input-stat-1-label"
+                  placeholder="Teams Onboarded"
+                />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="input-stat-2-number">Stat 2 — Value</label>
+                <input
+                  type="text"
+                  id="input-stat-2-number"
+                  placeholder="99.9%"
+                />
+              </div>
+              <div class="form-group">
+                <label for="input-stat-2-label">Stat 2 — Label</label>
+                <input
+                  type="text"
+                  id="input-stat-2-label"
+                  placeholder="Uptime SLA"
+                />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="input-stat-3-number">Stat 3 — Value</label>
+                <input
+                  type="text"
+                  id="input-stat-3-number"
+                  placeholder="4.9★"
+                />
+              </div>
+              <div class="form-group">
+                <label for="input-stat-3-label">Stat 3 — Label</label>
+                <input
+                  type="text"
+                  id="input-stat-3-label"
+                  placeholder="Customer Rating"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- ── CTA PANEL ── -->
+          <div class="editor-panel" id="panel-cta">
+            <div class="panel-header">
+              <h2>🚀 CTA Banner</h2>
+              <p>Drive visitors to take the next step.</p>
+            </div>
+            <div class="form-group">
+              <label for="input-cta-title">CTA Heading</label>
+              <input
+                type="text"
+                id="input-cta-title"
+                placeholder="Ready to Build Something Great?"
+              />
+            </div>
+            <div class="form-group">
+              <label for="input-cta-desc">CTA Description</label>
+              <input
+                type="text"
+                id="input-cta-desc"
+                placeholder="Join 25,000+ teams already using Nexova."
+              />
+            </div>
+            <div class="form-group">
+              <label for="input-cta-button">Button Text</label>
+              <input
+                type="text"
+                id="input-cta-button"
+                placeholder="Get Started Free"
+              />
+            </div>
+          </div>
+
+          <!-- ── FOOTER PANEL ── -->
+          <div class="editor-panel" id="panel-footer">
+            <div class="panel-header">
+              <h2>🦶 Footer</h2>
+              <p>Customize your footer branding and copyright notice.</p>
+            </div>
+            <div class="form-group">
+              <label for="input-footer-brand">Brand Name</label>
+              <input type="text" id="input-footer-brand" placeholder="Nexova" />
+            </div>
+            <div class="form-group">
+              <label for="input-footer-tagline">Tagline</label>
+              <input
+                type="text"
+                id="input-footer-tagline"
+                placeholder="Where innovation meets simplicity."
+              />
+            </div>
+            <div class="form-group">
+              <label for="input-footer-copy">Copyright Text</label>
+              <input
+                type="text"
+                id="input-footer-copy"
+                placeholder="© 2025 Nexova, Inc. All rights reserved."
+              />
+            </div>
+          </div>
+        </form>
+      </main>
     </div>
 
-    <div id="message" class="message">Changes saved successfully!</div>
+    <!-- Sidebar overlay (mobile) -->
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
 
     <script src="../js/editor.js"></script>
   </body>

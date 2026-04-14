@@ -3,24 +3,187 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Landing Page – Customizable & Responsive Website</title>
+    <title>Nexova — Scale Your Business with Confidence</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="../css/index.css" />
   </head>
   <body>
-    <button class="theme-toggle" id="theme-toggle">Switch to Dark Mode</button>
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+      <div class="navbar-inner">
+        <a href="#" class="navbar-brand" id="nav-brand">Nexova</a>
+        <button
+          class="hamburger-btn"
+          id="hamburger-btn"
+          aria-label="Toggle navigation"
+          aria-expanded="false"
+        >
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+        <ul class="nav-menu" id="nav-menu">
+          <li>
+            <a href="#features" class="nav-link" id="nav-link-1">Solutions</a>
+          </li>
+          <li><a href="#stats" class="nav-link" id="nav-link-2">Results</a></li>
+          <li><a href="#cta" class="nav-link" id="nav-link-3">Pricing</a></li>
+          <li>
+            <a href="editor.html" class="nav-link nav-link--cta" id="nav-link-4"
+              >Get Started</a
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
 
-    <div class="container">
-      <h1 id="page-title">Welcome!</h1>
-      <h2 id="page-subtitle">Welcome to our Hero Section</h2>
-      <div id="page-description">
-        <p>
-          This is a simple landing page where you can edit the title, subtitle,
-          and description. Click the button below to go to the edit page.
+    <!-- HERO SECTION -->
+    <section class="hero-section" id="hero">
+      <div class="hero-content">
+        <div class="hero-text">
+          <span class="hero-badge" id="hero-badge">✦ Now in Public Beta</span>
+          <h1 class="hero-headline" id="page-title">
+            Scale Your Business with Confidence
+          </h1>
+          <p class="hero-subheadline" id="page-subtitle">
+            The all-in-one platform for modern teams to build, launch, and grow
+            — faster than ever.
+          </p>
+          <p class="hero-description" id="page-description">
+            Nexova gives your team the tools to move at startup speed without
+            sacrificing the reliability that enterprise demands. Trusted by over
+            25,000 teams worldwide.
+          </p>
+          <div class="hero-btn-group">
+            <a href="#features" class="btn btn--primary" id="hero-cta"
+              >Start for Free</a
+            >
+            <a href="editor.html" class="btn btn--outline">Customize Page</a>
+          </div>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <div class="hero-blob"></div>
+          <div class="hero-mockup-card">
+            <div class="mockup-dots">
+              <span class="dot dot--red"></span>
+              <span class="dot dot--yellow"></span>
+              <span class="dot dot--green"></span>
+            </div>
+            <div class="mockup-line mockup-line--80"></div>
+            <div class="mockup-line mockup-line--60"></div>
+            <div class="mockup-line mockup-line--90"></div>
+            <div class="mockup-line mockup-line--50"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURES SECTION -->
+    <section class="features-section" id="features">
+      <div class="section-container">
+        <div class="section-header">
+          <h2 class="section-title" id="features-title">
+            Why Teams Choose Nexova
+          </h2>
+          <p class="section-subtitle" id="features-subtitle">
+            Built for speed, designed for scale, trusted by teams that ship.
+          </p>
+        </div>
+        <div class="features-grid">
+          <div class="feature-card">
+            <span class="feature-card__icon" id="feature-1-icon">⚡</span>
+            <h3 class="feature-card__title" id="feature-1-title">
+              Blazing Performance
+            </h3>
+            <p class="feature-card__desc" id="feature-1-desc">
+              Sub-second load times and globally distributed infrastructure so
+              your users always get the best experience.
+            </p>
+          </div>
+          <div class="feature-card">
+            <span class="feature-card__icon" id="feature-2-icon">🎯</span>
+            <h3 class="feature-card__title" id="feature-2-title">
+              Built for Your Brand
+            </h3>
+            <p class="feature-card__desc" id="feature-2-desc">
+              Fully white-label and customizable. Match every pixel to your
+              brand guidelines without writing a single line of CSS.
+            </p>
+          </div>
+          <div class="feature-card">
+            <span class="feature-card__icon" id="feature-3-icon">🔒</span>
+            <h3 class="feature-card__title" id="feature-3-title">
+              Enterprise-Grade Security
+            </h3>
+            <p class="feature-card__desc" id="feature-3-desc">
+              SOC 2 Type II certified, end-to-end encrypted, and compliant with
+              GDPR, HIPAA, and CCPA from day one.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS SECTION -->
+    <section class="stats-section" id="stats">
+      <div class="section-container">
+        <div class="stats-grid">
+          <div class="stat-card">
+            <span class="stat-card__number" id="stat-1-number">25K+</span>
+            <span class="stat-card__label" id="stat-1-label"
+              >Teams Onboarded</span
+            >
+          </div>
+          <div class="stat-card">
+            <span class="stat-card__number" id="stat-2-number">99.9%</span>
+            <span class="stat-card__label" id="stat-2-label">Uptime SLA</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-card__number" id="stat-3-number">4.9★</span>
+            <span class="stat-card__label" id="stat-3-label"
+              >Customer Rating</span
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA BANNER -->
+    <section class="cta-section" id="cta">
+      <div class="section-container cta-container">
+        <h2 class="cta-title" id="cta-title">
+          Ready to Build Something Great?
+        </h2>
+        <p class="cta-desc" id="cta-desc">
+          Join 25,000+ teams already using Nexova to ship faster and scale
+          smarter.
+        </p>
+        <a
+          href="editor.html"
+          class="btn btn--primary btn--large"
+          id="cta-button"
+          >Get Started Free</a
+        >
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer" id="footer">
+      <div class="footer-inner">
+        <p class="footer-brand" id="footer-brand">Nexova</p>
+        <p class="footer-tagline" id="footer-tagline">
+          Where innovation meets simplicity.
+        </p>
+        <p class="footer-copy" id="footer-copy">
+          © 2025 Nexova, Inc. All rights reserved.
         </p>
       </div>
-
-      <a href="editor.html" class="edit-button">Edit Landing Page</a>
-    </div>
+    </footer>
 
     <script src="../js/index.js"></script>
   </body>

@@ -1,27 +1,32 @@
-# Landing Page & Content Editor
+# Nexova — Landing Page & Content Editor
 
-A lightweight, customizable landing page with a built-in content editor. Edit your hero section in real time, toggle dark mode, and persist changes across sessions — all with zero external dependencies.
+A professional, multi-section landing page with a built-in sidebar content editor. Every section is fully editable via the browser — no code, no build tools, no frameworks. Changes persist across sessions using `localStorage`.
 
 ---
 
 ## Features
 
-- **Customizable content** — Edit headline, subheadline, and description text.
-- **Instant preview** — Changes are applied to the landing page immediately.
-- **Responsive layout** — Optimized for desktop, tablet, and mobile devices.
-- **Dark mode** — Toggleable dark theme for comfortable viewing.
-- **Local persistence** — Content is saved in the browser via `localStorage`.
-- **Lightweight** — Pure HTML, CSS, and vanilla JS; no frameworks or build tools required.
+- **6 fully editable sections** — Navbar, Hero, Features (3 cards), Stats, CTA Banner, Footer.
+- **Sidebar editor** — Tab-based panel navigation to edit each section independently.
+- **Instant persistence** — All edits saved to `localStorage` and reflected on the landing page immediately.
+- **Fully responsive** — Mobile-first layout with breakpoints for phones, tablets, and desktops.
+- **Mobile hamburger menus** — Collapsible navigation on the landing page; slide-in sidebar drawer on the editor.
+- **Scroll reveal** — Feature and stat cards animate in as the user scrolls.
+- **Reset to defaults** — One-click restore of all default content from the editor.
+- **Clean codebase** — Semantic class names, descriptive CSS custom properties, and clearly named JS variables throughout.
+- **Zero dependencies** — Pure HTML5, CSS3, and Vanilla JavaScript. No npm, no build step.
 
 ---
 
 ## Tech Stack
 
-| Layer     | Technology         |
-| --------- | ------------------ |
-| Structure | HTML5              |
-| Styling   | CSS3               |
-| Logic     | Vanilla JavaScript |
+| Layer     | Technology                                         |
+| --------- | -------------------------------------------------- |
+| Structure | HTML5 (semantic elements)                          |
+| Styling   | CSS3 (custom properties, grid, flexbox, keyframes) |
+| Logic     | Vanilla JavaScript (ES6+)                          |
+| Storage   | Browser `localStorage`                             |
+| Fonts     | Google Fonts — Playfair Display & DM Sans          |
 
 ---
 
@@ -30,15 +35,18 @@ A lightweight, customizable landing page with a built-in content editor. Edit yo
 ```
 edit-landing-page/
 ├── html/
-│   ├── index.html      # Public-facing landing page
-│   └── editor.html     # Content editor interface
+│   ├── index.html        # Public-facing landing page (6 sections)
+│   └── editor.html       # Visual content editor with sidebar navigation
 ├── css/
-│   ├── index.css       # Styles for the landing page
-│   └── editor.css      # Styles for the editor view
+│   ├── index.css         # Styles for the landing page
+│   └── editor.css        # Styles for the editor (sidebar, topbar, form fields)
 └── js/
-    ├── index.js        # Landing page rendering & theme toggling
-    └── editor.js       # Editor logic & data synchronization
+    ├── index.js          # Landing page: loads content, hamburger menu, scroll reveal
+    └── editor.js         # Editor: sidebar panels, form population, save & reset
 ```
+
+> All HTML files reference `../css/` and `../js/` relative paths.
+> The folder structure **must remain intact** for the paths to resolve correctly.
 
 ---
 
@@ -46,8 +54,8 @@ edit-landing-page/
 
 ### Prerequisites
 
-- A modern web browser (Chrome, Firefox, Edge, or Safari)
-- No installation or build step required
+- Any modern browser (Chrome, Firefox, Edge, Safari 16+)
+- No installation, no `npm install`, no build step
 
 ### 1. Clone the repository
 
@@ -73,31 +81,80 @@ start html/index.html
 
 ### 3. Open the editor
 
-Click the **"Edit Landing Page"** button on the main page, or open `html/editor.html` directly in your browser.
+Click **"Get Started"** or **"Customize Page"** on the landing page, or open `html/editor.html` directly.
 
 ---
 
 ## Usage
 
-1. Open the editor and update the **headline**, **subheadline**, or **description** fields.
-2. Click **Save** — changes are persisted to `localStorage` and reflected on the landing page instantly.
-3. Use the **dark mode toggle** on either page to switch themes.
-4. To reset content, clear `localStorage` from your browser's developer tools (`Application → Storage → Local Storage`).
+### Editing Content
+
+1. Open `html/editor.html`.
+2. Use the **left sidebar** to switch between sections — Navbar, Hero, Features, Stats, CTA Banner, Footer.
+3. Edit any field (text, emoji icons, stat values, etc.).
+4. Click **Save Changes** — content is persisted to `localStorage`.
+5. Open `html/index.html` to see all changes applied live.
+
+### Editable Fields by Section
+
+| Section    | Editable Fields                                                         |
+| ---------- | ----------------------------------------------------------------------- |
+| Navbar     | Brand name, 3 nav link labels, CTA button label                         |
+| Hero       | Badge text, headline, subheadline, description, primary button text     |
+| Features   | Section title & subtitle; per card: emoji icon, title, description (×3) |
+| Stats      | Value and label for each of 3 stat blocks                               |
+| CTA Banner | Heading, description, button text                                       |
+| Footer     | Brand name, tagline, copyright text                                     |
+
+### Resetting Content
+
+In the editor, click **Reset All** → confirm the prompt to restore all default placeholder content. This clears `localStorage`.
+
+---
+
+## Responsive Breakpoints
+
+| Breakpoint | Behaviour                                                               |
+| ---------- | ----------------------------------------------------------------------- |
+| `> 900px`  | Full desktop layout — hero side-by-side, 3-column features & stats grid |
+| `≤ 900px`  | Hero stacks vertically, features/stats → 2-column grid                  |
+| `≤ 640px`  | Editor sidebar becomes a slide-in drawer with topbar hamburger toggle   |
+| `≤ 600px`  | Landing page navbar collapses to hamburger dropdown menu                |
+| `≤ 380px`  | Reduced font sizes and section padding                                  |
+
+---
+
+## CSS Architecture
+
+CSS custom properties are used throughout for a single source of truth:
+
+```css
+/* Colors */
+--color-bg, --color-surface, --color-surface-alt
+--color-text, --color-text-muted
+--color-accent, --color-accent-warm
+
+/* Layout */
+--navbar-height, --sidebar-width, --topbar-height
+
+/* Shape & Motion */
+--radius-card, --radius-pill
+--transition-fast, --transition-normal
+```
 
 ---
 
 ## Contributing
 
-Contributions are welcome! To get started:
+Contributions are welcome. To get started:
 
 1. Fork the repository.
-2. Create a new branch: `git checkout -b feature/your-feature-name`
-3. Commit your changes: `git commit -m "Add your feature"`
-4. Push to your branch: `git push origin feature/your-feature-name`
-5. Open a Pull Request.
+2. Create a branch: `git checkout -b feature/your-feature-name`
+3. Commit your changes: `git commit -m "feat: describe your change"`
+4. Push and open a Pull Request.
 
 ---
 
 ## License
 
-This project is open-source and available under the [MIT License](LICENSE).
+Open-source under the [MIT License](LICENSE).
