@@ -40,9 +40,11 @@ edit-landing-page/
 ├── css/
 │   ├── index.css         # Styles for the landing page
 │   └── editor.css        # Styles for the editor (sidebar, topbar, form fields)
-└── js/
-    ├── index.js          # Landing page: loads content, hamburger menu, scroll reveal
-    └── editor.js         # Editor: sidebar panels, form population, save & reset
+├── js/
+│   ├── index.js          # Landing page: loads content, hamburger menu, scroll reveal
+│   └── editor.js         # Editor: sidebar panels, form population, save & reset
+├── LICENSE
+└── README.md             # This file
 ```
 
 > All HTML files reference `../css/` and `../js/` relative paths.
