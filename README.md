@@ -4,6 +4,12 @@ A professional, multi-section landing page with a built-in sidebar content edito
 
 ---
 
+## Live Demo
+
+🚀 **Live Link:** [https://nexovabuilder.netlify.app](https://nexovabuilder.netlify.app)
+
+---
+
 ## Features
 
 - **6 fully editable sections** — Navbar, Hero, Features (3 cards), Stats, CTA Banner, Footer.
