@@ -32,22 +32,21 @@ A professional, multi-section landing page with a built-in sidebar content edito
 
 ## Project Structure
 
-```
+```text
 edit-landing-page/
-├── html/
-│   ├── index.html        # Public-facing landing page (6 sections)
-│   └── editor.html       # Visual content editor with sidebar navigation
+├── index.html        # Public-facing landing page (6 sections) [Root Level]
+├── editor.html       # Visual content editor with sidebar navigation [Root Level]
 ├── css/
-│   ├── index.css         # Styles for the landing page
-│   └── editor.css        # Styles for the editor (sidebar, topbar, form fields)
+│   ├── index.css     # Styles for the landing page
+│   └── editor.css    # Styles for the editor (sidebar, topbar, form fields)
 ├── js/
-│   ├── index.js          # Landing page: loads content, hamburger menu, scroll reveal
-│   └── editor.js         # Editor: sidebar panels, form population, save & reset
+│   ├── index.js      # Landing page: loads content, hamburger menu, scroll reveal
+│   └── editor.js     # Editor: sidebar panels, form population, save & reset
 ├── LICENSE
-└── README.md             # This file
+└── README.md         # This file
 ```
 
-> All HTML files reference `../css/` and `../js/` relative paths.
+> All HTML files reference `./css/` and `./js/` relative paths.
 > The folder structure **must remain intact** for the paths to resolve correctly.
 
 ---
@@ -68,22 +67,22 @@ cd edit-landing-page
 
 ### 2. Open the landing page
 
-Open `html/index.html` directly in your browser.
+Open `index.html` directly in your browser.
 
 ```bash
 # macOS
-open html/index.html
+open index.html
 
 # Linux
-xdg-open html/index.html
+xdg-open index.html
 
 # Windows
-start html/index.html
+start index.html
 ```
 
 ### 3. Open the editor
 
-Click **"Get Started"** or **"Customize Page"** on the landing page, or open `html/editor.html` directly.
+Click **"Get Started"** or **"Customize Page"** on the landing page, or open `./editor.html` directly.
 
 ---
 
@@ -91,11 +90,11 @@ Click **"Get Started"** or **"Customize Page"** on the landing page, or open `ht
 
 ### Editing Content
 
-1. Open `html/editor.html`.
+1. Open `./editor.html`.
 2. Use the **left sidebar** to switch between sections — Navbar, Hero, Features, Stats, CTA Banner, Footer.
 3. Edit any field (text, emoji icons, stat values, etc.).
 4. Click **Save Changes** — content is persisted to `localStorage`.
-5. Open `html/index.html` to see all changes applied live.
+5. Open `./index.html` to see all changes applied live.
 
 ### Editable Fields by Section
 
@@ -111,38 +110,6 @@ Click **"Get Started"** or **"Customize Page"** on the landing page, or open `ht
 ### Resetting Content
 
 In the editor, click **Reset All** → confirm the prompt to restore all default placeholder content. This clears `localStorage`.
-
----
-
-## Responsive Breakpoints
-
-| Breakpoint | Behaviour                                                               |
-| ---------- | ----------------------------------------------------------------------- |
-| `> 900px`  | Full desktop layout — hero side-by-side, 3-column features & stats grid |
-| `≤ 900px`  | Hero stacks vertically, features/stats → 2-column grid                  |
-| `≤ 640px`  | Editor sidebar becomes a slide-in drawer with topbar hamburger toggle   |
-| `≤ 600px`  | Landing page navbar collapses to hamburger dropdown menu                |
-| `≤ 380px`  | Reduced font sizes and section padding                                  |
-
----
-
-## CSS Architecture
-
-CSS custom properties are used throughout for a single source of truth:
-
-```css
-/* Colors */
---color-bg, --color-surface, --color-surface-alt
---color-text, --color-text-muted
---color-accent, --color-accent-warm
-
-/* Layout */
---navbar-height, --sidebar-width, --topbar-height
-
-/* Shape & Motion */
---radius-card, --radius-pill
---transition-fast, --transition-normal
-```
 
 ---
 
