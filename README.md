@@ -6,7 +6,7 @@ A professional, multi-section landing page with a built-in sidebar content edito
 
 ## Live Demo
 
-🚀 **Live Link:** [https://nexovabuilder.netlify.app](https://nexovabuilder.netlify.app)
+🚀 **Live Link:** [https://nexova-builder.netlify.app](https://nexova-builder.netlify.app)
 
 ---
 
